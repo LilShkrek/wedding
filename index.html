@@ -1,0 +1,607 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Приглашение — Вадим и Виктория</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #e9e2d8;
+      --card: #fbfaf7;
+      --text: #38332e;
+      --muted: #776f66;
+      --accent: #7b6248;
+      --accent-dark: #5f4a35;
+      --line: #d8cec2;
+      --soft: #e7dfd4;
+      --white: #ffffff;
+      --strip-width: 380px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      background-color: var(--bg);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100%;
+      margin: 0;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    body::before {
+      content: none;
+      display: none;
+    }
+
+    .page {
+      width: min(var(--strip-width), calc(100% - 56px));
+      margin: 0 auto;
+      padding: 28px 0 46px;
+    }
+
+    .site-title {
+      width: calc(100vw - 32px);
+      margin: 0 0 22px 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: var(--accent-dark);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(38px, 8vw, 58px);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0.075em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .single-strip {
+      overflow: hidden;
+      background: var(--card);
+      box-shadow: 0 22px 70px rgba(75, 61, 48, 0.12);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        180deg,
+        rgba(32, 27, 23, 0.08) 0%,
+        rgba(32, 27, 23, 0.18) 48%,
+        rgba(32, 27, 23, 0.52) 100%
+      );
+    }
+
+    .hero-date {
+      position: absolute;
+      top: 24px;
+      left: 28px;
+      z-index: 2;
+      display: grid;
+      gap: 4px;
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: clamp(44px, 12vw, 62px);
+      font-weight: 300;
+      line-height: 0.95;
+      letter-spacing: 0.03em;
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .hero-names {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      z-index: 2;
+      width: 82%;
+      transform: translateX(-50%);
+      color: var(--white);
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(38px, 11vw, 58px);
+      line-height: 1.05;
+      text-align: center;
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.26);
+    }
+
+    .hero-names span {
+      display: block;
+    }
+
+    .hero-names .amp {
+      margin: 2px 0;
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .hero-photo,
+    .venue-photos img,
+    .dress-code-photo,
+    .flower-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .section {
+      padding: 42px 28px;
+      text-align: center;
+      border-top: 1px solid rgba(216, 206, 194, 0.72);
+    }
+
+    .script-title {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(42px, 11vw, 58px);
+      font-weight: 400;
+      line-height: 1.05;
+    }
+
+    .lead {
+      margin: 0 auto;
+      font-size: 16px;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: 76%;
+      margin: 28px auto;
+      color: var(--accent);
+    }
+
+    .divider::before,
+    .divider::after {
+      content: "";
+      height: 1px;
+      flex: 1;
+      background: var(--line);
+    }
+
+    .date-big {
+      margin: 24px 0 8px;
+      color: var(--accent);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .calendar {
+      max-width: 310px;
+      margin: 18px auto 0;
+      font-size: 14px;
+    }
+
+    .calendar-title {
+      margin-bottom: 8px;
+      color: var(--accent-dark);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 7px 6px;
+      align-items: center;
+    }
+
+    .calendar-grid span {
+      min-height: 26px;
+      display: grid;
+      place-items: center;
+      color: var(--text);
+    }
+
+    .calendar-grid .weekday {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    .calendar-grid .selected {
+      width: 31px;
+      height: 31px;
+      justify-self: center;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+    }
+
+    .place-name {
+      margin-top: 28px;
+      color: var(--accent-dark);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 24px;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .venue-photos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 22px auto 0;
+    }
+
+    .venue-photos img,
+    .dress-code-photo {
+      border: 1px solid rgba(216, 206, 194, 0.9);
+      background: var(--soft);
+    }
+
+    .venue-photos img {
+      aspect-ratio: 1 / 1;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .map-button,
+    .rsvp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 220px;
+      min-height: 50px;
+      margin-top: 22px;
+      padding: 13px 26px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--white);
+      font-family: "Montserrat", Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      text-transform: uppercase;
+      box-shadow: 0 12px 26px rgba(95, 74, 53, 0.18);
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .map-button:hover,
+    .rsvp-button:hover {
+      transform: translateY(-2px);
+      background: var(--accent-dark);
+      box-shadow: 0 16px 34px rgba(95, 74, 53, 0.24);
+    }
+
+    .program-list {
+      display: grid;
+      gap: 18px;
+      margin: 14px auto 0;
+      text-align: left;
+    }
+
+    .program-item {
+      display: grid;
+      grid-template-columns: 64px 28px 1fr;
+      gap: 8px;
+      align-items: start;
+      font-size: 15px;
+    }
+
+    .program-time {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+
+    .program-line {
+      height: 1px;
+      margin-top: 15px;
+      background: var(--accent);
+      opacity: 0.7;
+    }
+
+    .dress-note {
+      margin: 0 auto 26px;
+      font-size: 16px;
+    }
+
+    .dress-code-gallery {
+      margin: 0 auto;
+    }
+
+    .dress-code-text {
+      margin: 24px 0 0;
+      padding-left: 22px;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.65;
+      text-align: left;
+    }
+
+    .dress-code-text li {
+      margin-bottom: 14px;
+      padding-left: 4px;
+    }
+
+    .dress-code-text li:last-child {
+      margin-bottom: 0;
+    }
+
+    .wish-list {
+      display: grid;
+      gap: 16px;
+      margin: 0 auto;
+      font-size: 15px;
+    }
+
+    .wish-list p {
+      margin: 0;
+    }
+
+    .rsvp-box {
+      margin: 0 auto;
+      padding: 30px 22px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .contacts {
+      display: grid;
+      gap: 8px;
+      justify-items: center;
+      font-size: 16px;
+    }
+
+    .contacts p {
+      margin: 0;
+    }
+
+    .phone {
+      color: var(--accent-dark);
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 32px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .flower-block {
+      position: relative;
+      overflow: hidden;
+      background: var(--soft);
+    }
+
+    .flower-block::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(36, 31, 27, 0.02) 0%, rgba(36, 31, 27, 0.5) 100%);
+    }
+
+    .signature {
+      position: absolute;
+      left: 50%;
+      bottom: 28px;
+      z-index: 1;
+      width: 86%;
+      margin: 0;
+      transform: translateX(-50%);
+      color: var(--accent);
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(36px, 11vw, 54px);
+      line-height: 1.1;
+      text-align: center;
+    }
+
+    @media (min-width: 900px) {
+      :root {
+        --strip-width: 340px;
+      }
+
+    }
+
+    @media (max-width: 430px) {
+      .page {
+        width: 100%;
+        padding-top: 22px;
+        padding-bottom: 0;
+      }
+
+      .site-title {
+        width: calc(100vw - 16px);
+        margin-bottom: 18px;
+        font-size: clamp(32px, 9vw, 38px);
+        letter-spacing: 0.065em;
+      }
+
+      .single-strip {
+        box-shadow: none;
+      }
+
+      .section {
+        padding: 38px 22px;
+      }
+
+      .venue-photos {
+        gap: 8px;
+      }
+
+      .map-button,
+      .rsvp-button {
+        width: 100%;
+        min-width: 0;
+      }
+
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <h1 class="site-title">Приглашение</h1>
+
+    <div class="single-strip">
+      <section class="hero" aria-label="Главное фото">
+        <img class="hero-photo" src="images/1.png" alt="Вадим и Виктория">
+
+        <div class="hero-date" aria-label="Дата свадьбы">
+          <span>11</span>
+          <span>07</span>
+          <span>26</span>
+        </div>
+
+        <div class="hero-names" aria-label="Имена молодожёнов">
+          <span>Вадим</span>
+          <span class="amp">∞</span>
+          <span>Виктория</span>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2 class="script-title">Дорогие гости!</h2>
+        <p class="lead">
+          Мы — невероятная пара и безумно рады, что нашли друг друга! Этот день будет наполнен любовью,
+          счастьем и самыми тёплыми моментами, и нам очень хочется разделить его с вами.
+        </p>
+
+        <div class="divider">♥</div>
+
+        <div class="date-big">11.07.2026</div>
+
+        <div class="calendar" aria-label="Календарь на июль 2026">
+          <div class="calendar-title">Июль</div>
+          <div class="calendar-grid">
+            <span class="weekday">пн</span><span class="weekday">вт</span><span class="weekday">ср</span><span class="weekday">чт</span><span class="weekday">пт</span><span class="weekday">сб</span><span class="weekday">вс</span>
+            <span></span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span>
+            <span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span class="selected">11</span><span>12</span>
+            <span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span>
+            <span>20</span><span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span>
+            <span>27</span><span>28</span><span>29</span><span>30</span><span>31</span><span></span><span></span>
+          </div>
+        </div>
+
+        <div class="place-name">Место</div>
+        <p>
+          Банкетный зал отеля<br>
+          «Хилтон Москва Ленинградская»
+        </p>
+
+        <div class="venue-photos" aria-label="Фотографии места проведения">
+          <img src="images/2.png" alt="Фото места проведения 1">
+          <img src="images/3.png" alt="Фото места проведения 2">
+        </div>
+
+        <a class="map-button" href="https://yandex.ru/maps/org/hilton_moscow_leningradskaya/1118420659/?ll=37.651618%2C55.774006&z=17" target="_blank" rel="noreferrer">Карта</a>
+      </section>
+
+      <section class="section">
+        <h2 class="script-title">Программа</h2>
+
+        <div class="program-list">
+          <div class="program-item">
+            <div class="program-time">17:30</div>
+            <div class="program-line"></div>
+            <div>Сбор гостей на торжественную роспись</div>
+          </div>
+
+          <div class="program-item">
+            <div class="program-time">18:15</div>
+            <div class="program-line"></div>
+            <div>Торжественная роспись</div>
+          </div>
+
+          <div class="program-item">
+            <div class="program-time">19:00</div>
+            <div class="program-line"></div>
+            <div>Приветственный фуршет</div>
+          </div>
+
+          <div class="program-item">
+            <div class="program-time">19:30</div>
+            <div class="program-line"></div>
+            <div>Торжественный банкет</div>
+          </div>
+
+          <div class="program-item">
+            <div class="program-time">00:00</div>
+            <div class="program-line"></div>
+            <div>Завершение мероприятия</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="divider">♥</div>
+        <h2 class="script-title">Дресс-код</h2>
+        <p class="dress-note">По желанию — официально-деловой стиль.</p>
+
+        <div class="dress-code-gallery" aria-label="Пример дресс-кода">
+          <img class="dress-code-photo" src="images/4.png" alt="Пример дресс-кода">
+        </div>
+
+        <ol class="dress-code-text">
+          <li>Дресс-кода нет, но мы будем рады видеть вас праздничными и нарядными — такими, как велит душа и повод.</li>
+          <li>Пусть ваш образ будет не по правилам, а по настроению — ярким, нарядным, праздничным. Без формальностей, только от сердца.</li>
+          <li>Никаких строгих рамок. Просто оденьтесь так, чтобы чувствовать себя частью нашего счастья — красиво, легко, по-праздничному.</li>
+          <li>Дресс-код — только ваша радость. Но будет особенно здорово, если вы выберете нарядный, праздничный образ.</li>
+          <!-- <li>Без галстуков и правил. Главное, чтобы вам хотелось улыбаться и танцевать — и чтобы ваш наряд звучал в унисон с этим днём.</li> -->
+        </ol>
+      </section>
+
+      <section class="section">
+        <div class="divider">♥</div>
+        <h2 class="script-title">Пожелания</h2>
+
+        <div class="wish-list">
+          <p>Для нас главное — ваше присутствие, улыбки и отличное настроение!</p>
+          <p>Оставьте дома заботы и запаситесь танцевальной обувью.</p>
+          <p>Если вы хотите поздравить нас с этим событием, будем рады конвертику — он поможет осуществить наши мечты.</p>
+          <p>Мы хотим, чтобы этот вечер прошёл в уютной, тёплой и дружеской атмосфере, наполненной смехом, танцами и добрыми воспоминаниями.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="divider">♥</div>
+        <h2 class="script-title">Контакты</h2>
+
+        <div class="contacts">
+          <p>По всем вопросам вы можете обращаться к нашему свадебному организатору:</p>
+          <a class="phone" href="tel:+79065033212">8-(906)-503-32-12</a>
+          <div>Дарья</div>
+        </div>
+      </section>
+
+      <section class="flower-block" aria-label="Финальное фото">
+        <img class="flower-photo" src="images/5.png" alt="Фото цветов">
+        <p class="signature">Будем вас ждать!<br>С любовью, Вадим<br>и Виктория.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
